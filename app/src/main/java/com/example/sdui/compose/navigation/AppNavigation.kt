@@ -7,12 +7,12 @@ import androidx.navigation.compose.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
-import com.example.sdui.viewModel.MainViewModel
+import com.example.sdui.viewModel.SDUIViewModel
 
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
-    val mainViewModel: MainViewModel = viewModel()
+    val SDUIViewModel: SDUIViewModel = viewModel()
 
     NavHost(navController, startDestination = "home") {
         composable("home") {
@@ -28,13 +28,13 @@ fun AppNavigation() {
             val apiUrl = backStackEntry.arguments?.getString("apiUrl") ?: ""
 
             // Chama fetchComponents com o apiUrl
-            mainViewModel.fetchComponents(apiUrl)
+            SDUIViewModel.fetchComponents(apiUrl)
 
-            if (mainViewModel.isLoading.value) {
+            if (SDUIViewModel.isLoading.value) {
                 CircularProgressIndicator(modifier = Modifier.fillMaxSize())
             } else {
-                if(mainViewModel.acao.value == "abrirTela"){
-                    ServerDrivenScreen(components = mainViewModel.components, navController = navController)
+                if(SDUIViewModel.acao.value == "abrirTela"){
+                    ServerDrivenScreen(components = SDUIViewModel.components, navController = navController)
                 }
             }
         }

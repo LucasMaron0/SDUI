@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.sdui.compose.components.RenderButton
+import com.example.sdui.compose.components.RenderList
 import com.example.sdui.compose.components.RenderText
 import com.example.sdui.compose.components.UiComponent
 import com.example.sdui.compose.navigation.NavigationAction
@@ -23,6 +24,7 @@ fun ServerDrivenScreen(
             when (component) {
                 is UiComponent.TextComponent -> RenderText(component)
                 is UiComponent.ButtonComponent -> RenderButton(component, navController)
+                is UiComponent.ListComponent -> RenderList(component, navController)
             }
         }
     }

@@ -7,15 +7,13 @@ import com.example.sdui.compose.components.UiComponent
 import com.example.sdui.network.service.fetchComponentsFromApi
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class SDUIViewModel : ViewModel() {
     var components: List<UiComponent> = emptyList()
         private set
 
     var acao = mutableStateOf("")
         private set
 
-
-    // Alterando isLoading para um MutableState
     var isLoading = mutableStateOf(false)
         private set
 

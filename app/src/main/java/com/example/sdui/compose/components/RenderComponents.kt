@@ -36,9 +36,16 @@ fun RenderButton(component: UiComponent.ButtonComponent, navController: NavContr
     }
 }
 
-fun handleNavigation(action: NavigationAction, navController: NavController, actionParameters: String? = null) {
-    when (action) {
-        NavigationAction.EXIBIR_HOME -> navController.navigate("home")
-        NavigationAction.EXIBIR_TELA_SDUI -> navController.navigate("serverDriven/${actionParameters}")
+@Composable
+fun RenderList(component: UiComponent.ListComponent, navController: NavController) {
+    Column {
+        component.items.forEach { item ->
+            when (item) {
+                is UiComponent.TextComponent -> RenderText(item)
+                is UiComponent.ButtonComponent -> RenderButton(item, navController) // Passando o navController
+                // Adicione mais tipos de componentes se necessário
+                is UiComponent.ListComponent -> TODO()
+            }
+        }
     }
 }
