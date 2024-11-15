@@ -2,7 +2,7 @@ package com.example.sdui.network.models
 
 data class ApiResponse(
     val acao: String,
-    val componentes: List<ComponentData>
+    val parametros: List<ComponentData>
 )
 
 data class ComponentData(

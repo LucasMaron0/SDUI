@@ -1,4 +1,3 @@
-// ServerDrivenScreen.kt
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -8,7 +7,6 @@ import com.example.sdui.compose.components.RenderButton
 import com.example.sdui.compose.components.RenderList
 import com.example.sdui.compose.components.RenderText
 import com.example.sdui.compose.components.UiComponent
-import com.example.sdui.compose.navigation.NavigationAction
 
 @Composable
 fun ServerDrivenScreen(

@@ -1,4 +1,3 @@
-// HomeScreen.kt
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.Column
@@ -9,7 +8,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 
-// HomeScreen.kt
+
 @Composable
 fun HomeScreen(onNavigateToServerDriven: (String) -> Unit) {
     Scaffold(
@@ -30,8 +29,7 @@ fun HomeScreen(onNavigateToServerDriven: (String) -> Unit) {
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 Button(onClick = {
-                    // Passa o apiUrl desejado
-                    onNavigateToServerDriven("X")
+                    onNavigateToServerDriven("")
                 }) {
                     Text("Abrir tela em Server-Driven UI")
                     Icon(Icons.Default.ArrowForward, contentDescription = "Ir para SDUI")

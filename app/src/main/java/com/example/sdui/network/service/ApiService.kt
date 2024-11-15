@@ -1,22 +1,14 @@
 package com.example.sdui.network.service
 
-import androidx.compose.ui.text.TextStyle
-import com.example.sdui.compose.components.UiComponent
-import com.example.sdui.compose.components.UiComponent.TextComponent
-import com.example.sdui.compose.components.UiComponent.ButtonComponent
-import com.example.sdui.compose.navigation.NavigationAction
-import com.example.sdui.network.mapper.mapComponentes
 import com.example.sdui.network.mapper.mapJson
-import com.example.sdui.network.models.ApiResponse
 import com.example.sdui.network.models.MappedResponse
-import com.google.gson.Gson
 
 fun fetchComponentsFromApi(apiUrl: String): MappedResponse {
     val response: String = when (apiUrl) {
         "OUTRO_ENDPOINT" -> """
             {
-                "acao": "abrirTela",
-                "componentes": [
+                "acao": "EXIBIR_TELA_SDUI",
+                "parametros": [
                     {
                         "tipo": "text",
                         "parametros": {
@@ -31,7 +23,7 @@ fun fetchComponentsFromApi(apiUrl: String): MappedResponse {
                             "id": "1",
                             "text": "Voltar para Home",
                             "onClickAction": "EXIBIR_HOME",
-                            "actionParameters": ""
+                            "actionParameters": {}
                         }
                     },
                     {
@@ -40,7 +32,7 @@ fun fetchComponentsFromApi(apiUrl: String): MappedResponse {
                             "id": "2",
                             "text": "Abrir a primeira tela SDUI novamente",
                             "onClickAction": "EXIBIR_TELA_SDUI",
-                            "actionParameters": ""
+                            "actionParameters": {}
                         }
                     },
                     {
@@ -49,7 +41,9 @@ fun fetchComponentsFromApi(apiUrl: String): MappedResponse {
                             "id": "5",
                             "text": "Abrir tela com lista",
                             "onClickAction": "EXIBIR_TELA_SDUI",
-                            "actionParameters": "COM_LISTA"
+                            "actionParameters":{
+                                "apiUrl": "COM_LISTA"
+                             }
                         }
                     }
                 ]
@@ -58,8 +52,8 @@ fun fetchComponentsFromApi(apiUrl: String): MappedResponse {
 
         "COM_LISTA" -> """
     {
-        "acao": "abrirTela",
-        "componentes": [
+        "acao": "EXIBIR_TELA_SDUI",
+        "parametros": [
             {
                 "tipo": "lista",
                 "parametros": {
@@ -90,8 +84,8 @@ fun fetchComponentsFromApi(apiUrl: String): MappedResponse {
 
         else -> """
             {
-                "acao": "abrirTela",
-                "componentes": [
+                "acao": "EXIBIR_TELA_SDUI",
+                "parametros": [
                     {
                         "tipo": "text",
                         "parametros": {
@@ -106,7 +100,7 @@ fun fetchComponentsFromApi(apiUrl: String): MappedResponse {
                             "id": "1",
                             "text": "Voltar para Home",
                             "onClickAction": "EXIBIR_HOME",
-                            "actionParameters": ""
+                            "actionParameters": {}
                         }
                     },
                     {
@@ -115,7 +109,9 @@ fun fetchComponentsFromApi(apiUrl: String): MappedResponse {
                             "id": "2",
                             "text": "Abrir OUTRA tela SDUI",
                             "onClickAction": "EXIBIR_TELA_SDUI",
-                            "actionParameters": "OUTRO_ENDPOINT"
+                            "actionParameters": {
+                                "apiUrl": "OUTRO_ENDPOINT"
+                            }
                         }
                     }
                 ]

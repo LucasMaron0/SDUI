@@ -1,6 +1,5 @@
 package com.example.sdui
 
-// MainActivity.kt
 import AppNavigation
 import android.os.Bundle
 import androidx.activity.ComponentActivity

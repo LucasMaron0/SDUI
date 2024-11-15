@@ -8,8 +8,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.sdui.compose.navigation.NavigationAction
-
 
 @Composable
 fun RenderText(component: UiComponent.TextComponent) {
@@ -42,9 +40,8 @@ fun RenderList(component: UiComponent.ListComponent, navController: NavControlle
         component.items.forEach { item ->
             when (item) {
                 is UiComponent.TextComponent -> RenderText(item)
-                is UiComponent.ButtonComponent -> RenderButton(item, navController) // Passando o navController
-                // Adicione mais tipos de componentes se necessário
-                is UiComponent.ListComponent -> TODO()
+                is UiComponent.ButtonComponent -> RenderButton(item, navController)
+                is UiComponent.ListComponent -> {}
             }
         }
     }

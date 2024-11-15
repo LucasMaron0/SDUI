@@ -1,6 +1,5 @@
 package com.example.sdui.network.mapper
 
-import androidx.compose.ui.text.TextStyle
 import com.example.sdui.compose.components.UiComponent
 import com.example.sdui.compose.navigation.NavigationAction
 import com.example.sdui.network.models.ApiResponse
@@ -13,7 +12,7 @@ fun mapJson(json: String): MappedResponse {
 }
 
 fun mapComponentes(apiResponse: ApiResponse): MappedResponse {
-    val mappedComponents = apiResponse.componentes.flatMap { componentData ->
+    val mappedComponents = apiResponse.parametros.flatMap { componentData ->
         if (componentData.tipo == "lista") {
             val itensLista = componentData.parametros["itensLista"] as? List<Map<String, Any>> ?: emptyList()
             itensLista.mapNotNull { item ->
@@ -25,7 +24,7 @@ fun mapComponentes(apiResponse: ApiResponse): MappedResponse {
             listOfNotNull(mapSingleComponent(componentData.tipo, componentData.parametros))
         }
     }
-    return MappedResponse(apiResponse.acao, mappedComponents)
+    return MappedResponse(NavigationAction.valueOf(apiResponse.acao), mappedComponents)
 }
 
 fun mapNavigationAction(actionString: String?): NavigationAction {
