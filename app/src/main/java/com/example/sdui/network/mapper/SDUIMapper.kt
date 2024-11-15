@@ -6,9 +6,8 @@ import com.example.sdui.network.models.ApiResponse
 import com.example.sdui.network.models.MappedResponse
 import com.google.gson.Gson
 
-fun mapJson(json: String): MappedResponse {
-    val apiResponse: ApiResponse = Gson().fromJson(json, ApiResponse::class.java)
-    return mapComponentes(apiResponse)
+fun mapJson(json: ApiResponse): MappedResponse {
+    return mapComponentes(json)
 }
 
 fun mapComponentes(apiResponse: ApiResponse): MappedResponse {

@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sdui.compose.components.UiComponent
 import com.example.sdui.compose.navigation.NavigationAction
-import com.example.sdui.network.service.fetchComponentsFromApi
+import com.example.sdui.network.ApiClient
+import com.example.sdui.network.mapper.mapJson
 import kotlinx.coroutines.launch
 
 class SDUIViewModel : ViewModel() {
@@ -20,10 +21,11 @@ class SDUIViewModel : ViewModel() {
 
     fun fetchComponents(apiUrl: String) {
         viewModelScope.launch {
-            isLoading.value = true
-            val response = fetchComponentsFromApi(apiUrl)
-            acao.value = response.acao
-            parametros = response.parametros
+//            isLoading.value = true
+            val response = ApiClient.apiService.fetchComponentsFromApi(apiUrl)
+            val mapped = mapJson(response);
+            acao.value = mapped.acao
+            parametros = mapped.parametros
             isLoading.value = false
         }
     }
