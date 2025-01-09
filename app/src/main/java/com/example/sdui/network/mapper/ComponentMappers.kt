@@ -4,21 +4,21 @@ import androidx.compose.ui.text.TextStyle
 import com.example.sdui.compose.components.UiComponent
 import com.example.sdui.network.models.ActionParameters
 
-fun mapTextComponent(parametros: Map<String, Any>): UiComponent.TextComponent? {
-    val id = parametros["id"] as? String ?: return null
-    val text = parametros["text"] as? String ?: return null
-    val style = when (parametros["style"] as? String) {
+fun mapTextComponent(params: Map<String, Any>): UiComponent.TextComponent? {
+    val id = params["id"] as? String ?: return null
+    val text = params["text"] as? String ?: return null
+    val style = when (params["style"] as? String) {
         "default" -> TextStyle.Default
         else -> TextStyle.Default
     }
     return UiComponent.TextComponent(id = id, text = text, style = style)
 }
 
-fun mapButtonComponent(parametros: Map<String, Any>): UiComponent.ButtonComponent? {
-    val id = parametros["id"] as? String ?: ""
-    val text = parametros["text"] as? String ?: ""
-    val action = mapNavigationAction(parametros["onClickAction"] as? String)
-    val actionParameters = mapActionParameters(parametros["actionParameters"] as? Map<String, Any>)
+fun mapButtonComponent(params: Map<String, Any>): UiComponent.ButtonComponent? {
+    val id = params["id"] as? String ?: ""
+    val text = params["text"] as? String ?: ""
+    val action = mapNavigationAction(params["onClickAction"] as? String)
+    val actionParameters = mapActionParameters(params["actionParameters"] as? Map<String, Any>)
     return UiComponent.ButtonComponent(
         id = id,
         text = text,
@@ -34,9 +34,9 @@ fun mapActionParameters(actionParametersMap: Map<String, Any>?): ActionParameter
     }
 }
 
-fun mapListaComponent(itensLista: List<Map<String, Any>>): UiComponent.ListComponent {
-    val itens = itensLista.mapNotNull { item ->
-        mapSingleComponent(item["tipo"] as? String ?: "", item["parametros"] as? Map<String, Any> ?: emptyMap())
+fun mapListaComponent(listItens: List<Map<String, Any>>): UiComponent.ListComponent {
+    val itens = listItens.mapNotNull { item ->
+        mapSingleComponent(item["type"] as? String ?: "", item["params"] as? Map<String, Any> ?: emptyMap())
     }
     return UiComponent.ListComponent(itens)
 }

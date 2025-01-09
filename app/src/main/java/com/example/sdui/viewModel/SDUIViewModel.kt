@@ -10,10 +10,10 @@ import com.example.sdui.network.mapper.mapJson
 import kotlinx.coroutines.launch
 
 class SDUIViewModel : ViewModel() {
-    var parametros: List<UiComponent> = emptyList()
+    var params: List<UiComponent> = emptyList()
         private set
 
-    var acao = mutableStateOf(NavigationAction.EXIBIR_HOME)
+    var action = mutableStateOf(NavigationAction.SHOW_HOME_SCREEN)
         private set
 
     var isLoading = mutableStateOf(false)
@@ -21,11 +21,11 @@ class SDUIViewModel : ViewModel() {
 
     fun fetchComponents(apiUrl: String) {
         viewModelScope.launch {
-//            isLoading.value = true
+            isLoading.value = true
             val response = ApiClient.apiService.fetchComponentsFromApi(apiUrl)
             val mapped = mapJson(response);
-            acao.value = mapped.acao
-            parametros = mapped.parametros
+            action.value = mapped.action
+            params = mapped.params
             isLoading.value = false
         }
     }

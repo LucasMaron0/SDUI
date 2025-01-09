@@ -13,7 +13,7 @@ fun handleNavigation(action: NavigationAction, navController: NavController, act
     }
 
     when (action) {
-        NavigationAction.EXIBIR_HOME -> navController.navigate("home")
-        NavigationAction.EXIBIR_TELA_SDUI -> navController.navigate("serverDriven/$jsonParams")
+        NavigationAction.SHOW_HOME_SCREEN -> navController.navigate("home")
+        NavigationAction.SHOW_SDUI_SCREEN -> navController.navigate("serverDriven/$jsonParams")
     }
 }

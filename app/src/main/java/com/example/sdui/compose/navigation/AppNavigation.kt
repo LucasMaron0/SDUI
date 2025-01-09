@@ -8,7 +8,6 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.example.sdui.compose.navigation.NavigationAction
 import com.example.sdui.network.models.ActionParameters
-import com.example.sdui.network.models.MappedResponse
 import com.example.sdui.viewModel.SDUIViewModel
 import com.google.gson.Gson
 
@@ -42,8 +41,8 @@ fun AppNavigation() {
             if (SDUIViewModel.isLoading.value) {
                 CircularProgressIndicator(modifier = Modifier.fillMaxSize())
             } else {
-                if (SDUIViewModel.acao.value == NavigationAction.EXIBIR_TELA_SDUI) {
-                    ServerDrivenScreen(components = SDUIViewModel.parametros, navController = navController)
+                if (SDUIViewModel.action.value == NavigationAction.SHOW_SDUI_SCREEN) {
+                    ServerDrivenScreen(components = SDUIViewModel.params, navController = navController)
                 }
             }
         }

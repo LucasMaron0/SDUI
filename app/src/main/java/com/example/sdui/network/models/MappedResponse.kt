@@ -4,6 +4,6 @@ import com.example.sdui.compose.components.UiComponent
 import com.example.sdui.compose.navigation.NavigationAction
 
 data class MappedResponse(
-    val acao: NavigationAction,
-    val parametros: List<UiComponent>
+    val action: NavigationAction,
+    val params: List<UiComponent>
 )
